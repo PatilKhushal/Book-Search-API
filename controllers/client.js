@@ -38,14 +38,13 @@ async function filterQueryBooks(query)
 async function filterQuery(query)
 {
     let limit = 50;
-    return await query 
-                    .where('stock')
-                    .gt(0)     
+    return await query     
                     .limit(limit)
                     .populate(
                         {
                             path : 'books', 
-                            select : ['-_id', '-category', '-author', '-__v', '-publication', '-stock']
+                            match : {'stock' : {$gt : 0}},
+                            select : ['-_id', '-category', '-author', '-__v', '-publication', '-stock'],
                         }
                     )
 }
@@ -118,9 +117,10 @@ async function handleGetCategory(request, response)
     try
     {
         let category = request.params.category.toLowerCase();
+        console.log(category)
         let res = await filterQuery(
             categoryModel
-                .find(
+                .findOne(
                     {
                         categoryName : category
                     }
@@ -128,11 +128,12 @@ async function handleGetCategory(request, response)
                 .select(
                     [
                         '-_id', 
-                        'categoryName'
+                        '-__v'
                     ]
                 )
         );
-
+        
+        console.log(res);
         return response    
                 .status(200)
                 .json(
@@ -141,7 +142,6 @@ async function handleGetCategory(request, response)
     }
     catch(err)
     {
-        console.log(err);
         return response
                 .sendStatus(500);
     }
