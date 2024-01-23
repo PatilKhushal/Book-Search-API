@@ -348,4 +348,12 @@ Example Response:
 ```json
 [
   {
-    "categoryName
+    "categoryName": "Category 1",
+    // ... (other category details)
+  },
+  {
+    "categoryName": "Category 2",
+    // ... (other category details)
+  }
+]
+```
