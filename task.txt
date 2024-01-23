@@ -1,0 +1,22 @@
+********************************************************** Database **********************************************************
+books       :   ISBN, title, pages, publishDate, language[], publication, author[], category[], stock       (DONE)
+author      :   authorName, dob, penName, country, books[]                                                  (DONE)
+publication :   publicationName, country, books[]                                                           (DONE)
+category    :   categoryName, books[]                                                                       (DONE)
+
+
+********************************************************** Endpoints **********************************************************
+Client
+GET     /                               ->      give client books data limited to 50 books with stock > 0               (DONE)
+GET     /:ISBN                          ->      give client book with equivalent ISBN or proper message                 (DONE)
+GET     /category/:category             ->      give client book according to category or proper message                (DONE)
+GET     /author/:author                 ->      give client book according to author or proper message                  (DONE)
+GET     /publication/:publication       ->      give client book according to author or proper message                  (DONE)
+
+
+Admin
+POST        /admin              ->      let admin post a single book entry or proper message                                    (DONE)
+PATCH       /admin              ->      let admin update book or proper message                                                 (DONE)
+POST        /admin/author       ->      let admin post multiple author entries or proper message                                (DONE)
+POST        /admin/publication  ->      let admin post multiple publication entries or proper message                           (DONE)
+POST        /admin/category     ->      let admin post multiple category entries or proper message                              (DONE)
