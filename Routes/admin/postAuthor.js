@@ -1,13 +1,15 @@
 // imports
 const express = require('express');
-const { handleAuthorPost } = require('../../controllers/admin');
+const { handleAuthorPost, getAuthor } = require('../../controllers/admin');
 
 // initialization
 const Router = express.Router();
 
 
 // handling requests
-Router.post('/', handleAuthorPost);
+Router
+    .get('/', getAuthor)
+    .post('/', handleAuthorPost);
 
 
 // exports

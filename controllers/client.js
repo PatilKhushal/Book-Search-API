@@ -5,8 +5,6 @@ async function filterQueryBooks(query)
 {
     let limit = 50;
     return await query
-                    .where('stock')
-                    .gt(0)
                     .limit(limit)  // limit result to ${limit} documents 
                     .select(
                         [
@@ -17,18 +15,21 @@ async function filterQueryBooks(query)
                     .populate(
                         {
                             path : 'publication', 
-                            select : ['publicationName', 'country', '-_id']
+                            select : ['publicationName', '-_id']
+                            /* select : ['publicationName', 'country', '-_id'] */
                         }
                     ) 
                     .populate(
                         {
                             path : 'author', 
-                            select : ['authorName', 'dob', 'penName', 'country', '-_id']
+                            /* select : ['authorName', 'dob', 'penName', 'country', '-_id'] */
+                            select : ['authorName', '-_id']
                         }
                     )
                     .populate(
                         {
                             path : 'category', 
+                            /* select : ['categoryName', '-_id'] */
                             select : ['categoryName', '-_id']
                         }
                     );
@@ -56,7 +57,7 @@ async function handleGetAllBooksData(request, response)
 {
     try
     {
-        let res = await filterQueryBooks(
+        let books = await filterQueryBooks(
             bookModel
                 .find(
                     {
@@ -65,16 +66,11 @@ async function handleGetAllBooksData(request, response)
                 )
         );
         
+        console.log(books);
         return response    
-                .status(200)
-                .json(
-                    {
-                        'total' : res.length, 
-                        'data' : [
-                            ...res
-                        ]
-                    }
-                );
+                    .render('clientHome', {
+                        books
+                    });
     }
     catch(err)
     {

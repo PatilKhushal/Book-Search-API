@@ -205,6 +205,21 @@ async function handleAuthorPost (request, response)
     }
 }
 
+async function getAuthor(request, response)
+{
+    return response.json(await authorModel.find({}));
+}
+
+async function getPublication(request, response)
+{
+    return response.json(await publicationModel.find({}));
+}
+
+async function getCategory(request, response)
+{
+    return response.json(await categoryModel.find({}));
+}
+
 // handling publication post by admin
 async function handlePublicationPost (request, response)
 {
@@ -291,10 +306,30 @@ async function handleCategoryPost (request, response)
     }
 }
 
+function showAdminLoginPage(request, response)
+{
+    return response.render('admin/adminLogin');
+}
+
+function handleAdminPost(request, response)
+{
+    return response.redirect('/admin/book');
+}
+
+async function showAdminHomePage(request, response)
+{
+    response.render('admin/adminHome');
+}
 module.exports = {
     handleBookPost,
     handleAuthorPost,
     handlePublicationPost,
     handleCategoryPost,
-    handleBookPatch
+    handleBookPatch,
+    showAdminLoginPage,
+    handleAdminPost,
+    showAdminHomePage,
+    getAuthor,
+    getCategory,
+    getPublication
 };

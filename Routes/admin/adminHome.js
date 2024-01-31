@@ -3,9 +3,9 @@ const express = require('express');
 const postAuthor = require('./postAuthor');
 const postPublication = require('./postPublication');
 const postCategory = require('./postCategory');
-const { handleBookPost, handleBookPatch } = require('../../controllers/admin');
-const validateUniqueISBN = require('../../middleware/bookPostMiddleware');
-
+const postBook = require('./postBook');
+const { showAdminLoginPage, handleAdminPost } = require('../../controllers/admin');
+const validateAdminLogin = require('../../middleware/validateAdminLogin');
 
 // initalization
 const Router = express.Router();
@@ -15,12 +15,12 @@ const Router = express.Router();
 Router.use('/author', postAuthor);
 Router.use('/publication', postPublication);
 Router.use('/category', postCategory);
-
+Router.use('/book', postBook)
 
 // handling requests
-Router.post('/', validateUniqueISBN, handleBookPost);
-Router.patch('/', handleBookPatch);
-
+Router
+    .get('/', showAdminLoginPage)
+    .post('/', validateAdminLogin, handleAdminPost);
 
 // exports
 module.exports = Router;

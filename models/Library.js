@@ -29,7 +29,7 @@ const authorSchema = mongoose.Schema(
                 type : mongoose.SchemaTypes.ObjectId, 
                 ref : 'Books',
             }
-        ]
+        ],
     }
 )
 const authorModel = mongoose.model('Author', authorSchema);
@@ -132,17 +132,48 @@ const bookSchema = mongoose.Schema(
 
         stock : {
             type : Number,
-            required : true
-        }
+        },
     }
 );
 const bookModel = mongoose.model('Books', bookSchema);
 
+const userSchema = mongoose.Schema(
+    {
+        name : {
+            type : String,
+            required : true
+        },
+
+        email : {
+            type : String,
+            required : true,
+            unique : true
+        },
+
+        password : {
+            type : String,
+            required : true,
+        },
+
+        role : {
+            type : String,
+            required : true,
+            enum : ['ADMIN', 'NORMAL'],
+            default : "NORMAL"
+        },
+
+        profileImg : {
+            type : String,
+        }
+    }
+)
+const userModel = mongoose.model('Users', userSchema);
 
 // exports
 module.exports = {
     bookModel,
     categoryModel,
     publicationModel,
-    authorModel
+    authorModel,
+    userModel
 };

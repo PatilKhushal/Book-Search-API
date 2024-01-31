@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Library Management System</title>
+    <link rel="stylesheet" href="../css/output.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+
+        <!-- Main Content -->
+        <div class="flex-1 p-10">
+            <h1 class="text-3xl mb-4">Manage Library Data</h1>
+
+            <!-- Add Book Form -->
+            <div class="flex-1 p-10">
+                <h1 class="text-3xl mb-4">Add New Book</h1>
+                <form action="/admin/book" method="post" class="space-y-3">
+                    <input type="text" name="ISBN" placeholder="ISBN" class="w-full p-2 rounded" required>
+                    <input type="text" name="title" placeholder="Title" class="w-full p-2 rounded" required>
+                    <input type="number" name="pages" placeholder="pages" class="w-full p-2 rounded">
+                    <input type="date" name="publishDate" placeholder="publication date" class="w-full p-2 rounded" required>
+                    <input type="text" name="language" placeholder="language" class="w-full p-2 rounded" required>
+                    <!-- Dropdown for Authors -->
+                    <select name="author" class="w-full p-2 rounded" id="author-select">
+                        <!-- Options will be populated here -->
+                    </select>
+                    <!-- Dropdown for Publications -->
+                    <select name="publication" class="w-full p-2 rounded" id="publication-select">
+                        <!-- Options will be populated here -->
+                    </select>
+                    <!-- Dropdown for Categories -->
+                    <select name="category" class="w-full p-2 rounded" id="category-select">
+                        <!-- Options will be populated here -->
+                    </select>
+                    <button type="submit" class="px-4 py-2 rounded bg-blue-500 text-white">Add Book</button>
+                </form>
+            </div>
+
+            <!-- Add Authors Form -->
+            <div class="mb-6">
+                <h2 class="text-2xl mb-3">Add Authors</h2>
+                <form action="/admin/author" method="post" class="space-y-3">
+                    <input type="text" name="authorName" placeholder="Author Name" class="w-full p-2 rounded" required>
+                    <!-- Include other author details here -->
+                    <button type="submit" class="px-4 py-2 rounded bg-blue-500 text-white">Add Author</button>
+                </form>
+            </div>
+
+            <!-- Add Publications Form -->
+            <div class="mb-6">
+                <h2 class="text-2xl mb-3">Add Publications</h2>
+                <form action="/admin/publication" method="post" class="space-y-3">
+                    <input type="text" name="publicationName" placeholder="Publication Name" class="w-full p-2 rounded" required>
+                    <!-- Include other publication details here -->
+                    <button type="submit" class="px-4 py-2 rounded bg-blue-500 text-white">Add Publication</button>
+                </form>
+            </div>
+
+            <!-- Add Categories Form -->
+            <div class="mb-6">
+                <h2 class="text-2xl mb-3">Add Categories</h2>
+                <form action="/admin/category" method="post" class="space-y-3">
+                    <input type="text" name="categoryName" placeholder="Category Name" class="w-full p-2 rounded" required>
+                    <!-- Include other category details here -->
+                    <button type="submit" class="px-4 py-2 rounded bg-blue-500 text-white">Add Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/adminHome.js"></script>
+</body>
+</html>

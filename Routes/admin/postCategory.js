@@ -1,6 +1,6 @@
 // imports
 const express = require('express');
-const { handleCategoryPost } = require('../../controllers/admin');
+const { handleCategoryPost, getCategory } = require('../../controllers/admin');
 
 
 
@@ -9,7 +9,9 @@ const Router = express.Router();
 
 
 // handling requests
-Router.post('/', handleCategoryPost);
+Router
+    .post('/', handleCategoryPost)
+    .get('/', getCategory);
 
 
 // exports
