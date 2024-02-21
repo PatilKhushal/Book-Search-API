@@ -1,6 +1,6 @@
 // imports
 const express = require('express');
-const { handleGetAllBooksData, handleGetISBN } = require('../../controllers/client');
+const { handleGetAllBooksData, handleGetISBN } = require('../../controllers/client/clientHome');
 const getCategory = require('./getCategory')
 const getAuthor = require('./getAuthor')
 const getPublication = require('./getPublication')

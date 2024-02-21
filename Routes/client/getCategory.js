@@ -1,6 +1,6 @@
 // imports
 const express = require('express');
-const { handleGetCategory } = require('../../controllers/client');
+const { handleGetCategory } = require('../../controllers/client/getCategory');
 
 
 // initalization

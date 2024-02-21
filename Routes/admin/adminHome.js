@@ -4,8 +4,8 @@ const postAuthor = require('./postAuthor');
 const postPublication = require('./postPublication');
 const postCategory = require('./postCategory');
 const postBook = require('./postBook');
-const { showAdminLoginPage, handleAdminPost } = require('../../controllers/admin');
-const validateAdminLogin = require('../../middleware/validateAdminLogin');
+const { showAdminLoginPage, handleAdminPost } = require('../../controllers/admin/admin');
+const validateAdminLogin = require('../../middleware/admin/validateAdminLogin');
 
 // initalization
 const Router = express.Router();

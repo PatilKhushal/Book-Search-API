@@ -1,6 +1,6 @@
 // imports
 const express = require('express');
-const { handlePublicationPost, getPublication } = require('../../controllers/admin');
+const { handlePublicationPost, getPublication } = require('../../controllers/admin/admin');
 
 // initialization
 const Router = express.Router();

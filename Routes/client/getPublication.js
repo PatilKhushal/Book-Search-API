@@ -1,6 +1,6 @@
 // imports
 const express = require('express');
-const { handleGetPublication } = require('../../controllers/client');
+const { handleGetPublication } = require('../../controllers/client/getPublication');
 
 
 // initalization

@@ -1,6 +1,6 @@
 // imports
 const express = require('express');
-const { handleCategoryPost, getCategory } = require('../../controllers/admin');
+const { handleCategoryPost, getCategory } = require('../../controllers/admin/admin');
 
 
 

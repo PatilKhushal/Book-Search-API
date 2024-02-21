@@ -1,4 +1,4 @@
-const { userModel } = require("../models/Library");
+const { userModel } = require("../../models/user");
 const bcrypt = require('bcrypt');
 
 async function validateAdminLogin(request, response, next)

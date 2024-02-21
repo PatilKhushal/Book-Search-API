@@ -1,4 +1,8 @@
-const { bookModel, authorModel, publicationModel, categoryModel } = require('../models/Library');
+const { authorModel } = require('../../models/author');
+const { bookModel } = require('../../models/books');
+const { categoryModel } = require('../../models/category');
+const { publicationModel } = require('../../models/publication');
+
 
 async function handlePublicationUpdate(bookId, publicationId)
 {
